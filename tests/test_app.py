@@ -16,3 +16,23 @@ def test_read_root_deve_retornar_200_e_messagem():
     # assert response.status_code == HTTPStatus.NOT_FOUND
     assert response.status_code == HTTPStatus.OK  # deu certo a requisição?
     assert response.json() == {'message': 'busquem conhecimento'}
+
+
+def test_create_user():
+    client = TestClient(app)
+
+    response = client.post(
+        '/users/',
+        json={
+            'username': 'testUsername',
+            'email': 'test@test.com',
+            'password': 'testPassword',
+        },
+    )
+
+    assert response.status_code == HTTPStatus.CREATED
+    assert response.json() == {
+        'username': 'testUsername',
+        'email': 'test@test.com',
+        'id': 1,
+    }

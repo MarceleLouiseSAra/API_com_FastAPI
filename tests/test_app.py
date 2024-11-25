@@ -1,14 +1,8 @@
 from http import HTTPStatus
 
-from fastapi.testclient import TestClient
 
-from fast_one.app import app
-
-client = TestClient(app)
-
-
-def test_read_root_deve_retornar_200_e_messagem():
-    client = TestClient(app)  # arrange
+def test_read_root_deve_retornar_200_e_messagem(client):
+    # client = TestClient(app)  # arrange
 
     response = client.get('/')  # act
 
@@ -18,21 +12,18 @@ def test_read_root_deve_retornar_200_e_messagem():
     assert response.json() == {'message': 'busquem conhecimento'}
 
 
-def test_create_user():
-    client = TestClient(app)
-
+def test_create_user(client):
     response = client.post(
         '/users/',
         json={
-            'username': 'testUsername',
-            'email': 'test@test.com',
-            'password': 'testPassword',
+            'username': 'marcele',
+            'email': 'marcele@example.com',
+            'password': 'secret',
         },
     )
-
-    assert response.status_code == HTTPStatus.CREATED
+    assert response.status_code == HTTPStatus.CREATED  # retornou 201?
     assert response.json() == {
-        'username': 'testUsername',
-        'email': 'test@test.com',
+        'username': 'marcele',
+        'email': 'marcele@example.com',
         'id': 1,
     }

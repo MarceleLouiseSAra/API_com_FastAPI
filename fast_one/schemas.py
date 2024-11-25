@@ -8,7 +8,11 @@ class Message(BaseModel):
 class userSchema(BaseModel):
     username: str
     email: EmailStr
-    passwrod: str
+    password: str
+
+
+class userDB(userSchema):
+    id: int
 
 
 class userPublic(
@@ -17,7 +21,3 @@ class userPublic(
     id: int
     username: str
     email: EmailStr
-
-
-class userDB(userSchema):
-    id: int

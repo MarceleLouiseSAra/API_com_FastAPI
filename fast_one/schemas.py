@@ -21,3 +21,7 @@ class userPublic(
     id: int
     username: str
     email: EmailStr
+
+
+class userList(BaseModel):
+    users: list[userPublic]

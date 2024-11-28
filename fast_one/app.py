@@ -38,7 +38,8 @@ def readUsers():
 def update_user(user_id: int, user: userSchema):
     if user_id < 1 or user_id > len(fakedb):
         raise HTTPException(
-            status_code=HTTPStatus.NOT_FOUND, detail='NOT FOUND' #no coverage
+            status_code=HTTPStatus.NOT_FOUND,
+            detail='NOT FOUND',  # no coverage
         )
 
     userWithID = userDB(
@@ -55,7 +56,8 @@ def update_user(user_id: int, user: userSchema):
 def delete_user(user_id: int):
     if user_id < 1 or user_id > len(fakedb):
         raise HTTPException(
-            status_code=HTTPStatus.NOT_FOUND, detail='User not found' #no coverage
+            status_code=HTTPStatus.NOT_FOUND,
+            detail='User not found',  # no coverage
         )
 
     del fakedb[user_id - 1]

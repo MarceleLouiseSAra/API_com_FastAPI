@@ -1,6 +1,5 @@
 from http import HTTPStatus
 
-
 def test_read_root_deve_retornar_200_e_messagem(client):
     # client = TestClient(app)  # arrange
 
